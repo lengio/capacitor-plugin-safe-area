@@ -36,14 +36,10 @@ public class SafeArea {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             displayCutout = windowInsets.getDisplayCutout();
             if(displayCutout != null) {
-                top = displayCutout.getSafeInsetTop();
-                left = displayCutout.getSafeInsetLeft();
-                right = displayCutout.getSafeInsetRight();
-                bottom = displayCutout.getSafeInsetBottom();
-
-                if(!this.getStatusBarVisible()) {
-                    top = Math.max(windowInsets.getStableInsetTop(), top);
-                }
+                top = Math.max(top, displayCutout.getSafeInsetTop());
+                left = Math.max(left, displayCutout.getSafeInsetLeft());
+                right = Math.max(right, displayCutout.getSafeInsetRight());
+                bottom = Math.max(bottom, displayCutout.getSafeInsetBottom());
             }
 
         }
